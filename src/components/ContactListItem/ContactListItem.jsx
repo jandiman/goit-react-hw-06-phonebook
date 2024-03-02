@@ -1,24 +1,44 @@
 import { FaTrash } from 'react-icons/fa';
 import css from './ContactListItem.module.css';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from '../redux/contactsSlice';
+import { getContact } from '../redux/selector';
 
-export const ContactListItem = ({ filteredContact, deleteContact }) => {
-  const handleDelete = () => {
-    deleteContact(filteredContact.id);
+export const ContactListItem = () => {
+  const dispatch = useDispatch();
+  const newContact = useSelector(getContact);
+
+  const handleDelete = e => {
+    dispatch(deleteContact(filteredContact.id));
   };
-
+  
   return (
-    <li className={css.contactListItem}>
-      <p>{filteredContact.name}:</p>
-      <p>{filteredContact.number}</p>
-      <button onClick={handleDelete}>
-        <FaTrash />
-      </button>
-    </li>
-  );
+        <li className={css.contactListItem}>
+          <p>{filteredContact.name}:</p>
+          <p>{filteredContact.number}</p>
+          <button onClick={handleDelete}>
+            <FaTrash />
+          </button>
+        </li>
+      );
 };
 
-ContactListItem.propTypes = {
-  filteredContact: PropTypes.object.isRequired,
-  deleteContact: PropTypes.func.isRequired,
-};
+
+////////////////HW04///////////////
+// export const ContactListItem = ({ filteredContact, deleteContact }) => {
+//   const handleDelete = () => {
+//     deleteContact(filteredContact.id);
+//   };
+
+//   return (
+//     <li className={css.contactListItem}>
+//       <p>{filteredContact.name}:</p>
+//       <p>{filteredContact.number}</p>
+//       <button onClick={handleDelete}>
+//         <FaTrash />
+//       </button>
+//     </li>
+//   );
+// };
+
+
