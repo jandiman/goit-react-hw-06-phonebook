@@ -10,6 +10,7 @@ import {
 } from 'redux-persist';
 import { contactsReducer } from './contactsSlice';
 import { filterReducer } from './filterSlice';
+import { getDefaultNormalizer } from '@testing-library/react';
 
 export const store = configureStore({
   reducer: {

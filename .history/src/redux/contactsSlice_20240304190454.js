@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const contactsSlice = createSlice({
+  // namespace
   name: 'contacts',
   initialState: {
     initialContacts: [
